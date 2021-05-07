@@ -1,0 +1,60 @@
+{% load static %}
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+  <link href="{%static 'css/one-page-wonder.min.css' %}" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+  <link href="{%static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create a PocKet Account</title>
+</head>
+<body id="signup">
+        <h3 class="text-center pt-5"><a style="color: lightcoral">PocKet</a></h3>
+        {% block content %}
+            <div class="container">
+                <div id="login-row" class="row justify-content-center align-items-center">
+                    <div id="login-column" class="col-md-6">
+                        <div id="login-box" class="col-md-16">
+                            <div class="content-section text-center text-info">
+                                <form method="POST">
+                                    {% csrf_token %}
+                                    <fieldset class="form-group">
+                                        <legend class="border-top mb-4">Sign up to PocKet</legend>
+                                            <p>{{ reg_error }}</p>
+                                            <form role="form" method="post">
+                                                {% csrf_token %}
+                                                <div class="form-group">
+                                                    <label class="col-md-3">Email</label>
+                                                        {{ form.email }}
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-3">Password</label>
+                                                         {{ form.password1 }}
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-3">Password</label>
+                                                        {{ form.password2 }}
+                                                </div>
+                                                <div class="form-group">
+                                                    <button type="submit" class="btn btn-outline-info">Sign Up</button>
+                                                </div>
+                                            </form>
+                                    </fieldset>
+                                </form>
+                                <div class="border-top pt-3">
+                                    <p><a href="{% url "login" %}" class="text-muted"><small>Already have an account? Log In</small></a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endblock content %}
+</body>
+</html>
